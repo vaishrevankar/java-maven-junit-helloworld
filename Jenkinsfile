@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn clean install' 
+                sh 'mvn clean package -DskipTests' 
             }
   
                     post {
@@ -19,7 +19,11 @@ pipeline {
             }
         }      
         
-
+stage('test') { 
+            steps {
+                sh 'mvn test' 
+            }
+}
         
     }
 }
